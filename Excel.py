@@ -1,7 +1,6 @@
-from win32com.client import Dispatch
-import win32com.client as win32
-from random import randint, choice
 import os
+from PIL import ImageGrab, Image
+import win32com.client as win32
 
 cwd = os.getcwd()
 
@@ -45,3 +44,20 @@ class ExcelWrap:
 
     def getCell(self, x, y):
         return self.workSheet.Cells(x, y).Text
+
+    def getChart(self):
+        currentChart = self.workSheet.ChartObjects()
+        currentChart.Copy()
+        # print(currentChart.Text)
+        # currentChart.Chart.Export("chart" + str(0) + ".png")
+
+        image = ImageGrab.grabclipboard()
+        print(image)
+        # image.save("C:\\Users\\Eugene\\PycharmProjects\\ExcelToWord", 'png')
+
+        # for n, shape in enumerate(self.workSheet.Shapes): shape.Copy() image = ImageGrab.grabclipboard()
+        # image.save("C:\\Users\\Eugene\\PycharmProjects\\ExcelToWord", 'png')  # General This code is easy to make
+        # mistakes, because the clipboard may have no content, it is best to add try...except... pass
+
+
+# в якй місяць більше всього купляли

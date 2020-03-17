@@ -145,6 +145,7 @@ class WordWrap:
         # - could appear anywhere
         shape = self.wordDoc.InlineShapes.AddOLEObject(ClassType='Excel.Chart', FileName=filename)
         # set height and width in points
+        s =self.wordDoc.InlineShapes
         shape.Height = height
         shape.Width = width
 

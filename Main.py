@@ -77,19 +77,12 @@ for d in range(data.__len__()):
 
 print(max, value)
 
-# accessing 2nd element using naive method
-# using loop
-# j = 0
-# for i in test_dict:
-#     if (j == 1):
-#         print('2nd key using loop : ' + i)
-#     j = j + 1
+product_max_profit = 'The most profit comes from the sale of ' + value + ' product category (' + str(max) + ')'
 
-# accessing 2nd element using keys()
-
-
-word.addParagraph(main_ship + main_interest + total_profit)
+word.addParagraph(main_ship + main_interest + total_profit + product_max_profit)
 # word.addHeader()
+word.addInlineExcelChart(file_path, 'D1', 640, 480)
+# excel.getChart()
 word.saveAs(cwd + '\\report.docx')
 excel.close()
 word.close()
