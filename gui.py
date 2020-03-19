@@ -26,6 +26,8 @@ class Ui_MainWindow(object):
         self.calculate_button = QtWidgets.QPushButton(self.centralwidget)
         self.calculate_button.setGeometry(QtCore.QRect(220, 80, 75, 23))
         self.calculate_button.setObjectName("calculate_button")
+        self.calculate_button.clicked.connect()
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -42,3 +44,4 @@ class Ui_MainWindow(object):
         self.header_label.setText(_translate("MainWindow", "TextLabel"))
         self.calculate_button.setText(_translate("MainWindow", "PushButton"))
 
+    def

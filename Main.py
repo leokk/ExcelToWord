@@ -80,9 +80,14 @@ print(max, value)
 product_max_profit = 'The most profit comes from the sale of ' + value + ' product category (' + str(max) + ')'
 
 word.addParagraph(main_ship + main_interest + total_profit + product_max_profit)
-# word.addHeader()
-word.addInlineExcelChart(file_path, 'D1', 640, 480)
-# excel.getChart()
+
+# word.addInlineExcelChart(file_path, 'D1', 640, 480)
+
+word.addParagraph("Monthly profit is shown in the following chart.")
+excel.getChart2()
+word.addInlineExcelChart(cwd + '\\1.bmp')
+
 word.saveAs(cwd + '\\report.docx')
+
 excel.close()
 word.close()

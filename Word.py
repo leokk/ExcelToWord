@@ -1,6 +1,7 @@
-from win32com.client import Dispatch
-from random import randint, choice
 import os
+from random import randint, choice
+
+from win32com.client import Dispatch
 
 cwd = os.getcwd()
 file_path = cwd + "\\16.xlsx"
@@ -81,7 +82,7 @@ class WordWrap:
 
         self.selectEnd()
 
-    def addParagraph (self, text):
+    def addParagraph(self, text):
         if text[-1] != '\n':
             text = text + '\n'
 
@@ -105,7 +106,8 @@ class WordWrap:
 
         self.wordSel.InsertAfter(text)
 
-        self.wordSel.Style = 'Цитата'
+        # self.wordSel.Style = 'Цитата'
+        self.wordSel.Style = 'Цитата 2'
         f = self.wordSel.Range
         self.wordSel.Range.Font.Position = 10
         self.wordSel.Range.Font.Name = 'Times New Roman'
@@ -138,24 +140,21 @@ class WordWrap:
 
         self.selectEnd()
 
-    def addInlineExcelChart(self, filename, caption='', height=216, width=432):
+    def addInlineExcelChart(self, filename, height=216, width=432):
         # adds a chart inline within the text, caption below.
 
         # add an InlineShape to the InlineShapes collection
         # - could appear anywhere
-        shape = self.wordDoc.InlineShapes.AddOLEObject(ClassType='Excel.Chart', FileName=filename)
+        shape = self.wordDoc.InlineShapes.AddPicture(FileName=filename)
         # set height and width in points
-        s =self.wordDoc.InlineShapes
+        s = self.wordDoc.InlineShapes
         shape.Height = height
         shape.Width = width
 
-        # put it where we want
         shape.Range.Cut()
 
         self.wordSel.InsertAfter('chart will replace this')
         self.wordSel.Range.Paste()  # goes in selection
-        self.addStyledPara(caption, 'Текст')
-
 
 def randomText():
     # this may or may not be appropriate in your company
