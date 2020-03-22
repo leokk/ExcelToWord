@@ -6,9 +6,9 @@ from Word import WordWrap
 
 
 class Filemaker:
-    def __init__(self):
+    def __init__(self, file_path):
         self.cwd = os.getcwd()
-        self.file_path = self.cwd + "\\17.xlsx"
+        self.file_path = file_path
         self.excel = ExcelWrap(self.file_path)
         self.word = WordWrap()
 

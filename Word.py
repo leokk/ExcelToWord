@@ -1,12 +1,9 @@
-import os
-from random import randint, choice
-
 from win32com.client import Dispatch
 
-cwd = os.getcwd()
-file_path = cwd + "\\16.xlsx"
-
-MYDIR = os.getcwd()
+# cwd = os.getcwd()
+# file_path = cwd + "\\16.xlsx"
+#
+# MYDIR = os.getcwd()
 
 
 def simpleDemo():
@@ -33,7 +30,6 @@ class WordWrap:
             self.wordDoc = self.wordApp.Documents.Add()
         else:
             self.wordDoc = self.wordApp.Documents.Add(Template=templatefile)
-
         # set up the selection
         self.wordDoc.Range(0, 0).Select()
         self.wordSel = self.wordApp.Selection
@@ -156,59 +152,59 @@ class WordWrap:
         self.wordSel.InsertAfter('chart will replace this')
         self.wordSel.Range.Paste()  # goes in selection
 
-def randomText():
-    # this may or may not be appropriate in your company
-    RANDOMWORDS = ['strategic', 'direction', 'proactive',
-                   'reengineering', 'forecast', 'resources',
-                   'forward-thinking', 'profit', 'growth', 'doubletalk',
-                   'venture capital', 'IPO']
-
-    sentences = 5
-    output = ""
-    for sentenceno in range(randint(1, 5)):
-        output = output + 'Blah'
-        for wordno in range(randint(10, 25)):
-            if randint(0, 4) == 0:
-                word = choice(RANDOMWORDS)
-            else:
-                word = 'blah'
-            output = output + ' ' + word
-        output = output + '.'
-    return output
-
-
-def randomData():
-    months = str.split('Jan Feb Mar Apr')
-    data = []
-    data.append([''] + months)
-    for category in ['Widgets', 'Consulting', 'Royalties']:
-        row = [category]
-        for i in range(4):
-            row.append(randint(10000, 30000) * 0.01)
-        data.append(row)
-    return data
-
-
-def test():
-    outfilename = MYDIR + '\\pythonics_mgt_accounts.doc'
-
-    w = WordWrap()
-    w.show()
-    w.addStyledPara('Accounts for April', 'Назва')
-    w.addHeader("asdasdasdad")
-    # first some text
-    w.addStyledPara("Chairman's Introduction", 'Заголовок 2')
-    w.addStyledPara(randomText(), 'Звичайний')
-
-    # now a table sections
-    w.addStyledPara("Sales Figures for Year To Date", 'Заголовок 1')
-    data = randomData()
-    # w.addTable(data, 37)  # style wdTableStyleProfessional
-    w.addText('\n\n')
-
-    # finally a chart, on the first page of a ready-made spreadsheet
-    w.addStyledPara("Cash Flow Projections", 'Заголовок 1')
-    # w.addInlineExcelChart(MYDIR + '\\wordchart.xls', 'Проста таблиця 2')
-
-    w.saveAs(outfilename)
-    print('saved in', outfilename)
+# def randomText():
+#     # this may or may not be appropriate in your company
+#     RANDOMWORDS = ['strategic', 'direction', 'proactive',
+#                    'reengineering', 'forecast', 'resources',
+#                    'forward-thinking', 'profit', 'growth', 'doubletalk',
+#                    'venture capital', 'IPO']
+#
+#     sentences = 5
+#     output = ""
+#     for sentenceno in range(randint(1, 5)):
+#         output = output + 'Blah'
+#         for wordno in range(randint(10, 25)):
+#             if randint(0, 4) == 0:
+#                 word = choice(RANDOMWORDS)
+#             else:
+#                 word = 'blah'
+#             output = output + ' ' + word
+#         output = output + '.'
+#     return output
+#
+#
+# def randomData():
+#     months = str.split('Jan Feb Mar Apr')
+#     data = []
+#     data.append([''] + months)
+#     for category in ['Widgets', 'Consulting', 'Royalties']:
+#         row = [category]
+#         for i in range(4):
+#             row.append(randint(10000, 30000) * 0.01)
+#         data.append(row)
+#     return data
+#
+#
+# def test():
+#     outfilename = MYDIR + '\\pythonics_mgt_accounts.doc'
+#
+#     w = WordWrap()
+#     w.show()
+#     w.addStyledPara('Accounts for April', 'Назва')
+#     w.addHeader("asdasdasdad")
+#     # first some text
+#     w.addStyledPara("Chairman's Introduction", 'Заголовок 2')
+#     w.addStyledPara(randomText(), 'Звичайний')
+#
+#     # now a table sections
+#     w.addStyledPara("Sales Figures for Year To Date", 'Заголовок 1')
+#     data = randomData()
+#     # w.addTable(data, 37)  # style wdTableStyleProfessional
+#     w.addText('\n\n')
+#
+#     # finally a chart, on the first page of a ready-made spreadsheet
+#     w.addStyledPara("Cash Flow Projections", 'Заголовок 1')
+#     # w.addInlineExcelChart(MYDIR + '\\wordchart.xls', 'Проста таблиця 2')
+#
+#     w.saveAs(outfilename)
+#     print('saved in', outfilename)
