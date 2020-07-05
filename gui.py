@@ -9,7 +9,7 @@ from FileMaker import Filemaker
 class Window(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.title = "Title"
+        self.title = "Excel To Word"
         self.top = 100
         self.left = 100
         self.width = 640
